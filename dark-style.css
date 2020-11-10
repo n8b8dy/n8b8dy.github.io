@@ -1,0 +1,19 @@
+::selection {
+  background: #ddd;
+  color: #444;
+}
+body {
+  background-color: #222;
+  color: #eee;
+}
+#wrap-background {
+  background: #000 url('dark-bg.jpg') repeat;
+  opacity: 0.5;
+}
+#logo span {
+  color: #eee;
+}
+#input {
+  background: #121212;
+  color: #fff;
+}

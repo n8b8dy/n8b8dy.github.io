@@ -3,20 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>n8b8dy</title>
-
-  <link rel="icon" href="images/icon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>todos</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logo.png">
 </head>
 <body>
 
-<div id="wrapper">
-	<div id="header">
-		<span id="logoText">Hello, username!</span>
-	</div>
-</div>
+  <div id="wrap-background"></div>
 
-<script type="text/javascript" src="script.js"></script>
+  <div id="wrapper">
+    <div id="logo">
+      <span>todos</span>
+    </div>
+    <div id="todos">
+      <input type="text" id="input" placeholder="What needs to be done?">
+      <div id="todo-list">
+        <!-- <div id="todo-place-holder">
+          Nothing needs to do!
+        </div> -->
+        <!-- <div class="todo-item">
+          <div class="checkbox"></div>
+          <span class="text">Example</span>
+          <div class="delete">X</div>
+        </div> -->
+
+      </div>
+      <div id="settings">
+        Dark theme:&nbsp;<span id="dark-theme-button">Off</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
