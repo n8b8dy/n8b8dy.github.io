@@ -84,6 +84,11 @@ input.addEventListener('focus', function() {
 input.addEventListener('blur', function() {
   input.removeEventListener('keyup', enterEvent);
 });
+document.getElementById('add-button').addEventListener('click', function() {
+  if (input.value.trim() == '') {return;}
+  addTodo(input.value);
+  input.value = ''; 
+});
 
 list.addEventListener('click', function(e) {
   if (e.target.classList.contains('delete')) {
