@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Todo list</title>
+		<title>Vue Man</title>
 		<link rel="icon" href="logo.png" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="preloader.css" />
@@ -44,7 +44,7 @@
 			<ul class="todo-list" v-if="todos.length != 0">
 				<li class="todo-list-item" v-for="(todo, indx) in todos">
 					<div class="check-button" @click="markAsDone(indx)"></div>
-					<span class="todo-list-item-text">{{ todo }}</span>
+					<div class="todo-list-item-text">{{ todo }}</div>
 					<div class="delete-button" @click="deleteTask(indx, 'todos')">&times;</div>
 				</li>
 			</ul>
@@ -59,7 +59,7 @@
 			<ul class="done-list" v-if="doneTasks.length != 0">
 				<li class="done-list-item" v-for="(doneTask, indx) in doneTasks">
 					<div class="check-button" @click="markAsUnDone(indx)"><span>&#10003;</span></div>
-					<span class="done-list-item-text">{{ doneTask }}</span>
+					<div class="done-list-item-text">{{ doneTask }}</div>
 					<div class="delete-button" @click="deleteTask(indx, 'doneTasks')">&times;</div>
 				</li>
 			</ul>

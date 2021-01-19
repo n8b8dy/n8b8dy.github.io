@@ -95,7 +95,7 @@ hr {
 }
 .todo-list-item-text,
 .done-list-item-text {
-	max-width: 90%;
+	max-width: calc(100% - 2em);
 	overflow-x: auto;
 	overflow-y: hidden;
 	font-size: 1.25em;
