@@ -14,15 +14,15 @@
 			<div id="load"></div>
 			<span id="loading-text">Loading...</span>
 		</div>
-		<script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('user-text').style.height =
-          localStorage.getItem('textarea-size') || '';
-        document.getElementById('user-text').value = localStorage.getItem(
-          'textarea-text' || ''
-        );
-      });
-    </script>
+		<script>
+			window.addEventListener('load', function () {
+				document.getElementById('preloader').style.opacity = 0;
+				document.body.style.overflow = 'auto';
+				setTimeout(() => {
+					document.getElementById('preloader').style.display = 'none';
+				}, 500);
+			});
+		</script>
 		<div id="todo-app">
 			<div id="title">{{ title }}</div>
 			<div id="form-control">
