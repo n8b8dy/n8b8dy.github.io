@@ -1,171 +1,192 @@
-@import url('https://fonts.googleapis.com/css2?family=Syncopate&family=Work+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
 ::selection {
-  background: #444;
-  color: #fff;
+	background-color: #fff;
+	color: #000;
 }
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+	background: #666;
+	cursor: default;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+/* Main blocks */
 body {
-  color: #383838;
-  font-family: 'Work Sans', sans-serif;
+	background-color: #212121;
+	padding: 0;
+	color: #ddd;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+	font-size: 32px;
+}
+#todo-app {
+	width: 70%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
-#wrap-background {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: #fff url('bg.png') repeat;
-  opacity: 0.3;
-  z-index: -1;
-}
-#wrapper {
-  width: 50%;
-  height: 90vh;
-  margin: auto;
-  max-height: 960px;
-}
-
-#logo {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 3px solid #999;
-}
-#logo span {
-  font-size: 80px;
-  color: #555;
-}
-
-#todos {
-  padding-top: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#add-wrap {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+/* The top layer*/
+#title {
+	font-size: 2.5em;
+	text-align: center;
 }
 #input {
-  width: 79%;
-  padding: 4px 16px 4px 16px;
-  font-size: 48px;
-  outline: none;
-  font-family: 'Work Sans', sans-serif;
-  border: #999 1.5px solid;
-  border-radius: 0;
-  background: #fdfdfd;
+	display: inline;
+	width: calc(80% - 20px);
+	padding: 2.5px 10px 2.5px 10px;
+	background-color: #232323;
+	border: 0.2px solid #555;
+	outline: none;
+	color: #fff;
+	font-size: 1.5em;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
 }
-#input::placeholder {
-  font-style: oblique;
+#addTodo {
+	display: inline;
+	width: calc(20% - 5px);
+	background: transparent;
+	border: 1px solid #555;
+	padding: 2.5px 15px 2.5px 15px;
+	outline: none;
+	user-select: none;
+	color: #fff;
+	font-size: 1.5em;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+	cursor: pointer;
 }
-#add-button {
-  width: 20%;
-  font-size: 52px;
-  font-family: 'Work Sans', sans-serif;
-  background-color: #fdfdfd;
-  cursor: pointer;
-  border: 1.5px #999 solid;
-  margin: 0;
-  padding: 0 16px 0 16px;
-  outline: none;
+hr {
+	border: 0;
+	border-bottom: #555 solid 2px;
 }
-
-#todo-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 32px;
-  margin-bottom: 64px;
-}
-
-.todo-item {
-  width: 100%;
-  font-size: 40px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 16px;
-}
-.checkbox {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 1px solid #999;
-  cursor: pointer;
-  font-size: 22px;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  line-height: 32px;
-  font-weight: bold;
-  color: #4BB543;
-  user-select: none;
-}
-.text {
-  width: 80%;
-  word-wrap: break-word;
-  font-weight: 100;
-}
-.delete {
-  font-family: 'Syncopate', sans-serif;
-  font-size: 32px;
-  cursor: pointer;
-  user-select: none;
-}
-.done {
+.h2 {
   position: relative;
-  text-decoration: line-through;
+	font-size: 1.75em;
+	color: #aaa;
 }
-#settings {
-  width: 100%;
-  border-top: 3px solid #999;
-  height: 46px;
-  font-size: 32px;
-  display: flex;
-  align-items: center;
+
+/* Todo list */
+.todo-list,
+.done-list {
+	padding: 0;
 }
-#dark-theme-button {
+.todo-list-item,
+.done-list-item {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border-top: 1px #444 solid;
+	padding: 10px 0 10px 0;
+}
+.todo-list-item:last-child,
+.done-list-item:last-child {
+	border-bottom: 1px #444 solid;
+}
+.todo-list-item-text,
+.done-list-item-text {
+	max-width: 90%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	font-size: 1.25em;
+	margin-left: 1em;
+	vertical-align: middle;
+}
+.done-list-item-text {
+	text-decoration: line-through;
+	opacity: 0.75;
+}
+.check-button {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translate(0, -50%);
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	border: 1px solid #444;
+	cursor: pointer;
+	color: #4bb543;
+	text-align: center;
+}
+.check-button span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 22px;
+}
+.delete-button {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	font-size: 64px;
+	cursor: pointer;
+	user-select: none;
+}
+.clear-button {
+  display: inline-block;
+  position: absolute;
+  opacity: 0;
+  top: 50%;  
+  transform: translate(0, -50%);
+  margin-left: 8px;
   cursor: pointer;
-  user-select: none;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 24px;
+  transition: 0.25s;
+  pointer-events: none;
 }
-@media screen and (max-width: 1440px) {
-  #wrapper {
-    width: 75%;
-  }
-  .checkbox {
-    margin-right: 16px;
+.h2:hover .clear-button {
+  opacity: 1;
+  pointer-events: all;
+}
+.clear-button:hover {
+  text-decoration: underline;
+}
+
+/* Placeholder */
+.placeholder {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 15vh;
+	color: #444;
+	font-size: 1.25em;
+	font-family: 'Hachi Maru Pop', cursive;
+}
+@media (hover: none) {
+  .clear-button {
+    opacity: 1;
+    pointer-events: all;
   }
 }
-@media screen and (max-width: 1280px) {
-  #wrapper {
-    width: 85%;
-  }
+@media screen and (max-width: 920px) {
+	#todo-app {
+		width: 95%;
+	}
 }
-@media screen and (max-width: 960px) {
-  body {
-    margin: 0;
-    padding: 0;
-  }
-  #wrapper {
-    width: 98%;
-  }
-  #add-wrap {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  #input {
-    width: 100%;
-  }
-  #add-button {
-    width: 100%;
-    margin-top: -2px;
-  }
+@media screen and (max-width: 710px) {
+	#input {
+		width: calc(100% - 20px - 1.666666px);
+	}
+	#addTodo {
+		width: 100%;
+	}
 }

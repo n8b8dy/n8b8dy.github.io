@@ -1,42 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>todos</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="logo.png">
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Todo list</title>
+		<link rel="icon" href="logo.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="preloader.css" />
+	</head>
+	<body>
+		<div id="preloader">
+			<div id="load"></div>
+			<span id="loading-text">Loading...</span>
+		</div>
+		<script>
+			window.addEventListener('load', function () {
+				document.getElementById('preloader').style.opacity = 0;
+				setTimeout(() => {
+					document.getElementById('preloader').style.display = 'none';
+				}, 500);
+			});
+		</script>
+		<div id="todo-app">
+			<div id="title">{{ title }}</div>
+			<div id="form-control">
+				<input
+					type="text"
+					id="input"
+					:placeholder="inputPlaceholder"
+					:value="inputValue"
+					@input="inputChangeHandler"
+					@keyup.enter="inputKeyUp"
+				/>
+				<button id="addTodo" @click="addTodo">Add</button>
+			</div>
 
-  <div id="wrap-background"></div>
+			<hr />
+			<div class="h2">
+				Todo: ({{ todos.length }})
+				<div class="clear-button" @click="clearList('todos')">clear</div>
+			</div>
+			<ul class="todo-list" v-if="todos.length != 0">
+				<li class="todo-list-item" v-for="(todo, indx) in todos">
+					<div class="check-button" @click="markAsDone(indx)"></div>
+					<span class="todo-list-item-text">{{ todo }}</span>
+					<div class="delete-button" @click="deleteTask(indx, 'todos')">&times;</div>
+				</li>
+			</ul>
+			<div class="placeholder" v-else>There is nothing to do. Chill...</div>
 
-  <div id="wrapper">
-    <div id="logo">
-      <span>todos</span>
-    </div>
-    <div id="todos">
-      <div id="add-wrap">
-        <input type="text" id="input" placeholder="What needs to be done?"><input type="button" id="add-button" value="Add">
-      </div>
-      <div id="todo-list">
-        <!-- <div id="todo-place-holder">
-          Nothing needs to do!
-        </div> -->
-        <!-- <div class="todo-item">
-          <div class="checkbox"></div>
-          <span class="text">Example</span>
-          <div class="delete">X</div>
-        </div> -->
+			<hr />
 
-      </div>
-      <div id="settings">
-        Dark theme:&nbsp;<span id="dark-theme-button">Off</span>
-      </div>
-    </div>
+			<div class="h2">
+				Done: ({{ doneTasks.length }})
+				<div class="clear-button" @click="clearList('doneTasks')">clear</div>
+			</div>
+			<ul class="done-list" v-if="doneTasks.length != 0">
+				<li class="done-list-item" v-for="(doneTask, indx) in doneTasks">
+					<div class="check-button" @click="markAsUnDone(indx)"><span>&#10003;</span></div>
+					<span class="done-list-item-text">{{ doneTask }}</span>
+					<div class="delete-button" @click="deleteTask(indx, 'doneTasks')">&times;</div>
+				</li>
+			</ul>
+			<div class="placeholder" v-else>There is nothing done! Do something!</div>
+		</div>
 
-  </div>
-
-  <script src="script.js"></script>
-</body>
+		<script src="https://unpkg.com/vue@next"></script>
+		<script src="script.js"></script>
+	</body>
 </html>
