@@ -35,7 +35,7 @@ const App = {
 			this[place].splice(i, 1);
 		},
 		clearList(place) {
-			if (!confirm('Are you sure?')) {
+			if (this[place].length != 0 && !confirm('Are you sure?')) {
 				return;
 			}
 			this[place] = [];
